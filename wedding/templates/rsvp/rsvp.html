@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load url from future %}
-{% load bootstrap_toolkit honeypot %}
+{% load bootstrap_toolkit honeypot compress %}
 
 {% block title %}Colin and Jennie's Wedding!{% endblock %}
 
@@ -8,7 +8,10 @@
 <link href='http://fonts.googleapis.com/css?family=Sue+Ellen+Francisco|Merriweather' rel='stylesheet' type='text/css'>
 {% endblock %}
 {% block extra-js %}
+{% compress js %}
+<script src="{{ STATIC_URL }}libs/bootstrap/js/bootstrap-alert.js"></script>
 <script src="{{ STATIC_URL }}libs/bootstrap/js/bootstrap-tab.js"></script>
+{% endcompress %}
 {% endblock %}
 
 {% block body-class %}home{% endblock %}
@@ -18,6 +21,16 @@
         <div class="row">
             <div class="span12">
                 <h1>Colin and Jennie's Wedding!</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span12">
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    <button class="close" data-dismiss="alert">×</button>
+                    {{ message }}
+                </div>
+                {% endfor %}
             </div>
         </div>
         <div class="row">

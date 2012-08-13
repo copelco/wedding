@@ -21,9 +21,14 @@
 @import "../libs/bootstrap/less/utilities.less";
 @import "../libs/bootstrap/less/tooltip.less";
 @import "../libs/bootstrap/less/component-animations.less";
+@import "../libs/bootstrap/less/sprites.less";
 
 body {
-    padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+    background: url(../img/house-2.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 ul#places {
@@ -36,16 +41,42 @@ ul#places {
             max-width: 100%;
         }
         div.place-caption {
-            font-size: 150%;
-            width: 1160px;
-            padding: 5px;
+            font-size: 200%;
+            padding: 2%;
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
+            top: auto;
             background-color: #000;
             color: #FFF;
             .opacity(65);
+        }
+        div.view-only {
+            display: none;
+            a.close {
+                position: absolute;
+                top: 0;
+                right: 0;
+                margin-top: 5px;
+                margin-right: 5px;
+            }
+        }
+        &.viewing {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 10000;
+            background-color: #FFF; 
+            div.view-only {
+                display: block;
+            }
+            div.place-caption {
+                top: 0;
+                bottom: auto;
+            }
         }
     }
 }
@@ -59,6 +90,70 @@ ul#places {
         ul#places {
             margin-left: -20px;
             margin-right: -20px;
+        }
+    }
+}
+
+.transparent {
+    zoom: 1;
+    filter: alpha(opacity=50);
+    opacity: 0.5;
+}
+
+body.home {
+    h1 {
+        font-weight: normal;
+        font-family: 'Sue Ellen Francisco', cursive;
+        font-size: 6em;
+        text-align: center;
+        line-height: 2em;
+        text-shadow: 1px 1px #FFF;
+    }
+    img.photo {
+        border: 1px solid #000;
+        .border-radius(8px);
+    }
+    div.sub-content {
+        h2 {
+            text-shadow: 1px 1px #FFF;
+        }
+        font-family: 'Merriweather', serif;
+        p {
+            font-family: 'Merriweather', serif;
+        }
+        ul.nav {
+            margin: 0;
+            margin-top: 1.5em;
+            font-size: 1.2em;
+            border-bottom: 1px solid @grayLight;
+            li a {
+                background: @white;
+                border-bottom-color: @grayLight;
+                border-top-color: @grayLight;
+                border-left-color: @grayLight;
+                border-right-color: @grayLight;
+            }
+            li.active a {
+                background: @white;
+                border-bottom-color: transparent;
+            }
+        }
+        div.tab-content {
+            padding: 1em;
+            background-color: @white;
+            border-right: 1px solid @grayLight;
+            border-left: 1px solid @grayLight;
+            border-bottom: 1px solid @grayLight;
+        }
+        div.tab-pane {
+            background-color: #FFF;
+        }
+        div.rsvp {
+            margin-top: 1em;
+            padding: 1em;
+            border: 1px solid @grayLight;
+            .border-radius(8px);
+            background-color: @white;
         }
     }
 }

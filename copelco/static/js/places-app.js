@@ -131,11 +131,24 @@
         tagName: 'li',
         className: 'place',
 
-        initialize: function(){
+        events: {
+            'click a.view': 'viewPlace',
+            'click a.close': 'closePlace'
+        },
+
+        initialize: function() {
             this.model.bind('change', this.render, this);
         },
 
-        render: function(){
+        viewPlace: function() {
+            this.$el.addClass("viewing");
+        },
+
+        closePlace: function() {
+            this.$el.removeClass("viewing");
+        },
+
+        render: function() {
             $(this.el).html(ich.placeListItem(this.model.toJSON()));
             return this;
         }                                        
@@ -222,7 +235,11 @@
             // update active_type id and call fetch to trigger change
             window.app.active_type.set('id', id, {silent: true});
             window.app.active_type.fetch();
-        }
+        },
+
+        placeView: function(id) {
+
+        },
     });
 
     $(function(){

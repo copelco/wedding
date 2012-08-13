@@ -13,7 +13,7 @@ urlpatterns = patterns('',
         name='auth_login'),
     url(r'^accounts/logout/$', 'django.contrib.auth.views.logout',
         name='auth_logout'),
-    url(r'^$', TemplateView.as_view(template_name='home.html')),
+    url(r'^$', 'rsvp.views.rsvp', name='rsvp'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^locations/', include('poi.urls')),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load url from future %}
+{% load bootstrap_toolkit honeypot %}
+
+{% block extra-css %}
+<link href='http://fonts.googleapis.com/css?family=Sue+Ellen+Francisco|Merriweather' rel='stylesheet' type='text/css'>
+{% endblock %}
+{% block extra-js %}
+<script src="{{ STATIC_URL }}libs/bootstrap/js/bootstrap-tab.js"></script>
+{% endblock %}
+
+{% block body-class %}home{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <h1>Colin and Jennie's Wedding!</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span8">
+                <img class="photo" src="{{ STATIC_URL }}img/colin-jennie-1.jpg">
+            </div>
+            <div class="span4 sub-content">
+                <h2>November 3, 2012 &mdash; 5:30pm</h2>
+                <div class="tabbable"> <!-- Only required for left/right tabs -->
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab1" data-toggle="tab">Venue</a></li>
+                        <li><a href="#tab2" data-toggle="tab">Hotel</a></li>
+                        <li><a href="#tab3" data-toggle="tab">Registry</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab1">
+                            <h3>NC Museum of Life and Science</h3>
+                            <address>433 West Murray Avenue, Durham, NC 27704</address>
+                        </div>
+                        <div class="tab-pane" id="tab2">
+                            <h3>Hampton Inn &amp; Suites</h3>
+                            <address><a target='_blank' href='https://maps.google.com/maps?q=1542%20North%20Gregson%20Street,%20Durham,%20NC%2027701'>1542 North Gregson Street, Durham, NC 27701</a></address>
+                            <ul class='unstyled'>
+                                <li><strong>Phone:</strong> (919) 688-8880</li>
+                                <li><strong>Room Block:</strong> Copeland Wedding</li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane" id="tab3">
+                            <h3>Registry</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class='rsvp'>
+                    <h2>RSVP</h2>
+                    <form action="{% url "rsvp" %}" method="post">
+                        {% csrf_token %}
+                        {{ form|as_bootstrap }}
+                        {% render_honeypot_field %}
+                        <div class="actions">
+                            <button type="submit" class="btn primary">RSVP!</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> <!-- /container -->
+{% endblock %}

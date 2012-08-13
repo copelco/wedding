@@ -139,10 +139,13 @@ INSTALLED_APPS = (
     # External apps
     'south',
     'compressor',
-    'poi',
+    # 'poi',
     'icanhaz',
     'sorl.thumbnail',
+    'bootstrap_toolkit',
+    'honeypot',
     # Internal apps
+    'rsvp',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -180,3 +183,5 @@ SKIP_SOUTH_TESTS = True
 COMPRESS_PRECOMPILERS = (
    ('text/less', 'lessc {infile} {outfile}'),
 )
+
+HONEYPOT_FIELD_NAME = 'body2'

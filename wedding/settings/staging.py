@@ -3,8 +3,6 @@ from wedding.settings.base import *
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
-DATABASES['default']['NAME'] = 'copelco_staging'
-
 INSTALLED_APPS += (
     'gunicorn',
 )
@@ -15,7 +13,5 @@ CACHES = {
         'LOCATION': '127.0.0.1:11211',
     }
 }
-
-EMAIL_SUBJECT_PREFIX = '[Copelco Staging] '
 
 COMPRESS_ENABLED = True

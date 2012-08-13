@@ -80,9 +80,9 @@ def staging():
 @task
 def production():
     env.environment = 'production'
-    env.hosts = [] # FIXME: Add production hosts
+    env.hosts = ['50.17.226.149']
     env.branch = 'master'
-    env.server_name = '' # FIXME: Add production server name
+    env.server_name = 'colinandjennie.com'
     setup_path()
 
 
@@ -239,8 +239,8 @@ def update_services():
     require('environment')
     nginx.upload_nginx_site_conf(site_name=u'%(project)s-%(environment)s.conf' % env)
     supervisor_command('stop all')
-    upload_supervisor_app_conf(app_name=u'celery')
-    upload_supervisor_app_conf(app_name=u'gunicorn')
+    # upload_supervisor_app_conf(app_name=u'celery')
+    # upload_supervisor_app_conf(app_name=u'gunicorn')
     upload_supervisor_app_conf(app_name=u'group')
     supervisor_command('reload')
     supervisor_command('restart %(environment)s:*' % env)

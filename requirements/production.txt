@@ -1,5 +1,5 @@
 -r base.txt
-gunicorn==0.14.2
-greenlet==0.3.4
-gevent==0.13.6
+gunicorn==0.14.6
+greenlet==0.4.0
+gevent==0.13.7
 python-memcached==1.48

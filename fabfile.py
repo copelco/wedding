@@ -24,7 +24,7 @@ env.shell = '/bin/bash -c'
 env.disable_known_hosts = True
 env.ssh_port = 2222
 env.forward_agent = True
-env.password_names = ['password_create_salt', 'password_reset_salt']
+env.password_names = ['secret_key']
 
 # Additional settings for argyle
 env.ARGYLE_TEMPLATE_DIRS = (

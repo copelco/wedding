@@ -1,6 +1,6 @@
 import sys
 
-from copelco.settings.dev import *
+from wedding.settings.dev import *
 
 # Override settings here
 

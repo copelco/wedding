@@ -1,4 +1,4 @@
-# Django settings for copelco project.
+# Django settings for wedding project.
 import os
 
 PROJECT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
@@ -8,7 +8,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ('Colin Copeland', 'copelco@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -16,7 +16,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'copelco',
+        'NAME': 'wedding',
         'USER': '',
         'PASSWORD': '',
         'HOST': '',
@@ -112,10 +112,10 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'copelco.urls'
+ROOT_URLCONF = 'wedding.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'copelco.wsgi.application'
+WSGI_APPLICATION = 'wedding.wsgi.application'
 
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_PATH, 'templates'),

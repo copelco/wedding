@@ -15,5 +15,5 @@ urlpatterns = patterns('',
         name='auth_logout'),
     url(r'^$', 'rsvp.views.rsvp', name='rsvp'),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^locations/', include('poi.urls')),
+    # url(r'^locations/', include('poi.urls')),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

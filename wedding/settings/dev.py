@@ -1,4 +1,4 @@
-from copelco.settings.base import *
+from wedding.settings.base import *
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG

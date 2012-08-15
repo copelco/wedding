@@ -35,43 +35,46 @@
         <h2>November 3, 2012<br/ >5:30pm</h2>
         <div class="tabbable"> <!-- Only required for left/right tabs -->
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#tab1" data-toggle="tab">Venue</a></li>
-                <li><a href="#tab2" data-toggle="tab">Hotel</a></li>
-                <li><a href="#tab3" data-toggle="tab">Registry</a></li>
+                <li class="active"><a href="#tab1" data-toggle="tab">RSVP</a></li>
+                <li><a href="#tab2" data-toggle="tab">Venue</a></li>
+                <li><a href="#tab3" data-toggle="tab">Hotel</a></li>
+                <li><a href="#tab4" data-toggle="tab">Registry</a></li>
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="tab1">
+                    <h2>RSVP</h2>
+                    <form action="{% url "rsvp" %}" method="post">
+                        {% csrf_token %}
+                        {{ form|as_bootstrap }}
+                        {% render_honeypot_field %}
+                        <div class="actions">
+                            <button type="submit" class="btn primary">RSVP!</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane" id="tab2">
                     <h3>NC Museum of Life and Science</h3>
                     <address><a target='_blank' href='https://maps.google.com/maps?q=433+West+Murray+Avenue,+Durham,+NC+27704'>433 West Murray Avenue, Durham, NC 27704</a></address>
+                    <img src="{{ STATIC_URL }}img/venue.jpg">
                     <ul class='unstyled'>
                         <li><a href='http://www.ncmls.org/'>Website</a></li>
                         <li><strong>Phone:</strong> (919) 220-5429</li>
                     </ul>
                 </div>
-                <div class="tab-pane" id="tab2">
+                <div class="tab-pane" id="tab3">
                     <h3>Hampton Inn &amp; Suites</h3>
                     <address><a target='_blank' href='https://maps.google.com/maps?q=1542%20North%20Gregson%20Street,%20Durham,%20NC%2027701'>1542 North Gregson Street, Durham, NC 27701</a></address>
+                    <img src="{{ STATIC_URL }}img/hotel.jpg">
                     <ul class='unstyled'>
                         <li><a href='http://hamptoninn3.hilton.com/en/hotels/north-carolina/hampton-inn-and-suites-durham-north-i-85-RDUNOHX/index.html'>Website</a></li>
                         <li><strong>Phone:</strong> (919) 688-8880</li>
                         <li><strong>Room Block:</strong> Copeland Wedding</li>
                     </ul>
                 </div>
-                <div class="tab-pane" id="tab3">
+                <div class="tab-pane" id="tab4">
                     <h3>Registry</h3>
                 </div>
             </div>
-        </div>
-        <div class='rsvp'>
-            <h2>RSVP</h2>
-            <form action="{% url "rsvp" %}" method="post">
-                {% csrf_token %}
-                {{ form|as_bootstrap }}
-                {% render_honeypot_field %}
-                <div class="actions">
-                    <button type="submit" class="btn primary">RSVP!</button>
-                </div>
-            </form>
         </div>
     </div>
 </div>

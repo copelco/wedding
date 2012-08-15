@@ -24,6 +24,7 @@ class Guest(models.Model):
     arrival_date = models.DateField(choices=DATE_CHOICES,
                                     default=date(2012, 11, 3))
     date_submitted = models.DateTimeField(auto_now_add=True)
+    comments = models.TextField(blank=True)
 
     def __unicode__(self):
         return self.name

@@ -8,3 +8,24 @@ window.log = function f(){ log.history = log.history || []; log.history.push(arg
 
 
 // place any jQuery/helper plugins in here, instead of separate, slower script files.
+
+
+function toggle_regrets() {
+    var party_select = $('#id_party_size');
+    var date_select = $('#id_arrival_date');
+    var date_wrapper = $(date_select).parent().parent();
+    var size = $(party_select).val();
+    if (size == 0) {
+        date_wrapper.hide()
+        date_select.val('');
+    } else {
+        date_wrapper.show();
+        date_select.val('2012-11-03');
+    }
+}
+
+
+(function() {
+    $('#id_party_size').change(toggle_regrets);
+    toggle_regrets();
+})(jQuery);

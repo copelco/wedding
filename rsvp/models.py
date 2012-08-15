@@ -22,7 +22,8 @@ class Guest(models.Model):
     name = models.CharField(max_length=255)
     party_size = models.PositiveIntegerField(choices=GUEST_CHOICES, default=2)
     arrival_date = models.DateField(choices=DATE_CHOICES,
-                                    default=date(2012, 11, 3))
+                                    default=date(2012, 11, 3), blank=True,
+                                    null=True)
     date_submitted = models.DateTimeField(auto_now_add=True)
     comments = models.TextField(blank=True)
 
